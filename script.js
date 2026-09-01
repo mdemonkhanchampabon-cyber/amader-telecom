@@ -1,29 +1,29 @@
-const USER_ID="user_123"; const API="https://YOUR-BACKEND.com";
-let allOffers=[]; let currentFilter="all";
-async function loadOffers(){
-let res=await fetch(API+"/api/offers"); allOffers=await res.json(); renderOffers();
-let n=await fetch(API+"/api/notice"); let notice=await n.text(); document.getElementById("notice").innerText=notice;
-loadHistory();
-}
+
+const offers = [
+  {operator:'GP', title:'30GB 30দিন', desc:'ইন্টারনেট প্যাক', price:399},
+  {operator:'Robi', title:'20GB 30দিন', desc:'ইন্টারনেট প্যাক', price:298},
+  {operator:'Airtel', title:'40GB 30দিন', desc:'ইন্টারনেট প্যাক', price:448},
+  {operator:'BL', title:'1000 মিনিট', desc:'ভয়েস প্যাক', price:499},
+  {operator:'GP', title:'1000 মিনিট + 1GB', desc:'কম্বো প্যাক', price:599}
+];
+let currentFilter = "all";
 function renderOffers(){
-let list=document.getElementById("offerList"); list.innerHTML="";
-let filtered=allOffers.filter(o=> currentFilter=="all" || o.operator==currentFilter);
-filtered.forEach(o=>{
-let div=document.createElement("div"); div.className="offer-card";
-div.innerHTML=`<h4>${o.operator} - ${o.title}</h4><p>${o.description}</p><p><b>${o.price} TK</b></p><button onclick="buyOffer('${o._id}')">BUY NOW</button>`;
-list.appendChild(div);
-});
+  let list = document.getElementById("offerList") || document.getElementById("offer-list");
+  if(!list) return;
+  list.innerHTML = "";
+  let filtered = offers.filter(o=> currentFilter==="all" || o.operator===currentFilter);
+  filtered.forEach(o=>{
+    let div = document.createElement("div");
+    div.className = "offer-card";
+    div.style = "background:white;padding:15px;margin:10px;border-radius:12px;box-shadow:0 2px 8px #0002";
+    div.innerHTML = `<h4>${o.operator} - ${o.title}</h4><p>${o.desc}</p><p><b>${o.price} TK</b></p><button onclick="alert('অর্ডার নেওয়া হয়েছে: ${o.title}')" style="background:#065f46;color:white;padding:8px 15px;border:none;border-radius:20px">অর্ডার করুন</button>`;
+    list.appendChild(div);
+  });
 }
-function filterOffers(op,btn){
-currentFilter=op; document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active")); btn.classList.add("active"); renderOffers();
+function filterOffers(op, btn){
+  currentFilter = op;
+  document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+  if(btn) btn.classList.add("active");
+  renderOffers();
 }
-async function buyOffer(offerId){
-if(!confirm("Order Confirm?")) return;
-let res=await fetch(API+"/api/order",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({userId:USER_ID,offerId})});
-let data=await res.json(); alert(data.message); loadHistory();
-}
-async function loadHistory(){
-let res=await fetch(API+"/api/my-orders?userId="+USER_ID); let orders=await res.json();
-let h=document.getElementById("history"); h.innerHTML="<h3>My Orders</h3>"+orders.map(o=>`<p>${o.title} - ${o.status}</p>`).join("");
-}
-loadOffers();
+renderOffers();
