@@ -1,0 +1,13 @@
+body{font-family:Arial,sans-serif;background:#f2f2f2;margin:0;padding:0}
+.header{background:#006a4e;color:#fff;padding:15px;text-align:center}
+.header h2{margin:5px 0}
+#notice{background:#fff;color:#d00;padding:8px;margin-top:10px;border-radius:5px;font-size:14px}
+.tabs{display:flex;justify-content:center;gap:8px;padding:10px;background:#fff;position:sticky;top:0}
+.tabs button{padding:8px 14px;border:1px solid #006a4e;background:#fff;color:#006a4e;border-radius:20px;cursor:pointer}
+.tabs button.active{background:#006a4e;color:#fff}
+.offer-list{padding:10px}
+.offer-card{background:#fff;padding:15px;margin-bottom:10px;border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
+.offer-card h4{margin:0 0 5px 0}
+.offer-card p{margin:3px 0;color:#555}
+.offer-card button{background:#ff0000;color:#fff;border:none;padding:8px 12px;border-radius:5px;margin-top:8px;width:100%;cursor:pointer;font-weight:bold}
+.history{background:#fff;margin:10px;padding:15px;border-radius:10px}
