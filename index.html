@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আমাদের টেলিকম</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="header">
+<h2>🇧🇩 আমাদের টেলিকম</h2>
+<p>Balance: <span id="balance">500</span> ৳</p>
+<div id="notice">📢 আমাদের টেলিকমে স্বাগতম! সবচেয়ে কম দামে অফার পেতে এখনই অর্ডার করুন।</div>
+</div>
+<div class="tabs">
+<button onclick="filterOffer('all')" class="active">সব</button>
+<button onclick="filterOffer('GP')">GP</button>
+<button onclick="filterOffer('Robi')">Robi</button>
+<button onclick="filterOffer('Airtel')">Airtel</button>
+<button onclick="filterOffer('BL')">BL</button>
+</div>
+<div id="offerList" class="offer-list"></div>
+<div class="history">
+<h3>আমার অর্ডার</h3>
+<ul id="historyList"></ul>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
