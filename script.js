@@ -37,16 +37,16 @@ function filterOffers(op, btn){
   renderOffers();
 }
 
-function orderNow(text){
-  let number = prompt(text + "\nআপনার নাম্বার লিখুন:");
+
+  function orderNow(text){
+  let number = prompt(text + " কোন নাম্বারে লাগবে? লিখুন:");
   if(number){
-    alert("ধন্যবাদ! " + number + " নাম্বারে " + text + " পাঠানোর রিকোয়েস্ট নেওয়া হলো।");
-    // পরে এখানে WhatsApp লিংক লাগাবো
-    window.open("https://wa.me/8801789217854?text=Order: " + encodeURIComponent(text + " Number: " + number));
+    let url = "https://wa.me/8801789217854?text=Order: " + encodeURIComponent(text + " | Customer: " + number);
+    window.location.href = url;
   }
 }
-renderOffers();
-
+  
+    
 // প্রথম বাটন 'সব' কে সবুজ করে রাখো
 setTimeout(()=>{
   let firstBtn = document.querySelector("button");
